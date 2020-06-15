@@ -1,0 +1,27 @@
+<div class="problem" {{on "click" this.reveal}}>
+  <div class="first">
+    {{this.first}}
+  </div>
+  <div class="operator">
+    {{this.operator}}
+  </div>
+  <div class="second">
+    {{this.second}}
+  </div>
+
+  <div class="solution">
+    =
+    {{#if this.isRevealed}}
+      {{this.solution}}
+    {{/if}}
+  </div>
+
+  <div class="evaluate {{if this.isRevealed "revealed"}}">
+    <button type="button" {{on "click" (fn this.evaluate true)}}>
+      Yes
+    </button>
+    <button type="button" {{on "click" (fn this.evaluate false)}}>
+      No
+    </button>
+  </div>
+</div>
