@@ -1,18 +1,20 @@
-<div class="problem" {{on "click" this.reveal}}>
+<div class="problem">
   <div class="first">
     {{this.first}}
   </div>
   <div class="operator">
-    {{this.operator}}
+    {{this.op}}
   </div>
   <div class="second">
     {{this.second}}
   </div>
 
-  <div class="solution">
+  <div class="solution" {{on "click" this.reveal}}>
     =
     {{#if this.isRevealed}}
       {{this.solution}}
+    {{else}}
+      ?
     {{/if}}
   </div>
 

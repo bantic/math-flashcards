@@ -1,17 +1,24 @@
-html * {
+* {
   box-sizing: border-box;
+}
+
+html {
+  font-size: 4rem;
 }
 
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .problem {
-  width: 100vw;
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   border: 5vmax solid black;
-  font-size: 8rem;
 
   display: flex;
   flex-direction: column;
@@ -31,5 +38,6 @@ body {
 }
 
 .evaluate button {
-  font-size: 8rem;
+  font-size: 32px;
+  padding: 0.25rem;
 }
