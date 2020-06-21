@@ -38,8 +38,36 @@ export default class ProblemComponent extends Component {
     this.setProblem();
   }
 
+  @tracked optionsMult = true;
+  @tracked optionsAdd = true;
+  @tracked optionsSubtract = true;
+  @tracked first;
+  @tracked second;
+  @tracked op;
+  @tracked solution;
+  @tracked isRevealed;
+  @tracked startTime;
+  @tracked currentTime;
+
+  get elapsed() {
+    if (!this.startTime) {
+      return 0;
+    }
+    let ms = this.currentTime - this.startTime;
+    let s = ms / 1000;
+    return s.toFixed(2);
+  }
+
   setProblem() {
     this.isRevealed = false;
+    this.startTime = new Date();
+    this.currentTime = new Date();
+    if (this.timerInterval) {
+      window.clearInterval(this.timerInterval);
+    }
+    this.timerInterval = window.setInterval(() => {
+      this.currentTime = new Date();
+    }, 67);
 
     let { first, second, op, solution } = makeProblem();
     this.first = first;
@@ -48,20 +76,24 @@ export default class ProblemComponent extends Component {
     this.solution = solution;
   }
 
-  @tracked first;
-  @tracked second;
-  @tracked op;
-  @tracked solution;
-  @tracked isRevealed;
-
   @action reveal() {
     if (!this.isRevealed) {
       this.isRevealed = true;
+      window.clearInterval(this.timerInterval);
     }
   }
 
   @action evaluate(correct) {
-    console.log("correct:", correct);
     this.setProblem();
+  }
+
+  @action toggleOption(optionName) {
+    if (optionName === "mult") {
+      this.optionsMult = !this.optionsMult;
+    } else if (optionName === "add") {
+      this.optionsAdd = !this.optionsAdd;
+    } else if (optionName === "subtract") {
+      this.optionsSubtract = !this.optionsSubtract;
+    }
   }
 }

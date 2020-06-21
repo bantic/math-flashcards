@@ -41,3 +41,33 @@ body {
   font-size: 32px;
   padding: 0.25rem;
 }
+
+.options {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 5vmax;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.options button {
+  width: 5vmax;
+  background: white;
+}
+
+.options button.active {
+  background: gray;
+}
+
+.clock {
+  position: fixed;
+  left: 5vmax;
+  top: 5vmax;
+  width: 1rem;
+  height: 5vmax;
+  font-size: 0.5rem;
+  text-align: center;
+}

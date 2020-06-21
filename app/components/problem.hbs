@@ -1,3 +1,29 @@
+<div class="clock">
+  {{this.elapsed}}
+</div>
+<div class="options">
+  <button
+    type="button"
+    class="{{if this.optionsMult "active"}}"
+    {{on "click" (fn this.toggleOption "mult")}}
+  >
+    *
+  </button>
+  <button
+    type="button"
+    class="{{if this.optionsAdd "active"}}"
+    {{on "click" (fn this.toggleOption "add")}}
+  >
+    +
+  </button>
+  <button
+    type="button"
+    class="{{if this.optionsSubtract "active"}}"
+    {{on "click" (fn this.toggleOption "subtract")}}
+  >
+    -
+  </button>
+</div>
 <div class="problem">
   <div class="first">
     {{this.first}}
